@@ -1,0 +1,143 @@
+[a] Saltar al contenido
+[a] Servicios
+[a] Opiniones
+[a] Contacto
+[a] Portal
+[a] Mi auto
+[a] Agendar cita
+[a] Servicios
+[a] Mi Auto
+[a] Opiniones
+[a] Contacto
+[a] Agendar cita
+[a] Mi auto
+[a] Portal del equipo
+[span] Tu taller de confianza · La Molina
+[h1] Cuidamos tu auto.
+[em] Tú lo ves todo.
+[p] Agenda en un minuto, sigue cada etapa de la reparación desde tu celular y aprueba el presupuesto viendo fotos de tu propio auto. Más de 25 años de experiencia, ahora con total transparencia.
+[a] Agendar mi cita
+[a] Ver cómo va mi auto
+[span] ★★★★★
+[b] 4.8
+[div] en Google · Clientes que vuelven
+[span] Kia Cerato
+[span] ADI-388
+[h4] En reparación
+[small] Etapa 3 de 5 · actualizado hace 12 min
+[div] Auto recibido
+[small] 8:42
+[div] Diagnóstico listo
+[small] 10:15
+[div] Presupuesto aprobado
+[small] 11:02
+[b] Reparación en curso
+[div] Listo para recoger
+[span] Entrega
+[b] Lun 19 oct · 5 p. m.
+[span] Técnico a cargo
+[b] Jorge R.
+[b] +25
+[small] años de experiencia
+[b] +12
+[small] técnicos especializados
+[b] 24h
+[small] entrega promedio
+[small] aseguradoras aliadas
+[span] Servicios
+[h2] Todo lo que tu auto necesita
+[p] Precios referenciales. El precio final lo apruebas tú, desde tu celular, antes de que empecemos.
+[a] Agendar servicio
+[h3] Cambio de aceite
+[p] Aceite y filtro con productos de calidad.
+[small] desde
+[b] S/ 149
+[h3] Mantenimiento preventivo
+[p] Según kilometraje y manual del fabricante.
+[small] desde
+[b] S/ 290
+[h3] Scanner automotriz
+[p] Lectura de fallas electrónicas y sensores.
+[small] desde
+[b] S/ 80
+[h3] Frenos
+[p] Pastillas, discos y líquido de frenos.
+[small] desde
+[b] S/ 180
+[h3] Alineación y balanceo
+[p] Manejo estable y llantas que duran más.
+[small] desde
+[b] S/ 90
+[h3] Suspensión
+[p] Amortiguadores, resortes y terminales.
+[small] desde
+[b] S/ 220
+[h3] Planchado y pintura
+[p] Trabajamos directo con tu seguro.
+[small] cotización
+[b] Gratis
+[h3] Detailing y lavado
+[p] Pulido, encerado y lavado de salón.
+[small] desde
+[b] S/ 60
+[span] App para clientes
+[h2] Mi Auto: tu auto, en tu celular
+[p] Ingresa con tu placa y mira todo lo que pasa con tu auto. Lo que antes era “¿y cómo va mi carro?” por WhatsApp, ahora lo ves tú mismo.
+[h3] Agenda en 1 minuto
+[p] Elige servicio, día y hora disponible. Te recordamos por WhatsApp un día antes.
+[h3] Sigue tu auto en vivo
+[p] Cada etapa con hora, fotos y comentario del técnico. Como seguir un delivery.
+[h3] Aprueba con fotos
+[p] Ves la pieza gastada antes de pagar por ella. Apruebas o rechazas cada ítem.
+[h3] Inspección semáforo
+[p] Revisamos 20 puntos: verde está bien, amarillo pronto, rojo urgente.
+[h3] Historial de tu auto
+[p] Servicios, kilometraje y comprobantes en un solo lugar. Suma valor si lo vendes.
+[h3] Pruébalo ahora
+[p] Ingresa con tu placa y descubre Mi Auto. Sin descargar nada.
+[a] Entrar con mi placa
+[span] Opiniones
+[h2] Nuestros clientes nos recomiendan
+[b] 4.8
+[span] ★★★★★
+[small] Calificación en Google
+[span] ★★★★★
+[p] “Muy buen servicio, se fijan en los detalles y mi carro quedó impecable.”
+[div] Cristina
+[small] Reseña de Google
+[span] ★★★★★
+[p] “Calidad-precio recomendado. Buena atención al cliente de principio a fin.”
+[div] Edwin V.
+[small] Reseña de Google
+[span] ★★★★★
+[p] “Muy buen servicio y cuidan mucho su buen prestigio.”
+[div] Ricardo C.
+[small] Reseña de Google
+[p] Atención preferente a particulares, flotas y compañías de seguros
+[span] Rímac
+[span] Pacífico
+[span] Mapfre
+[span] La Positiva
+[span] Qualitas
+[span] Interbank
+[h2] Promo del mes
+[p] Cambia el aceite y recibe diagnóstico computarizado
+[b] GRATIS
+[p] · Hasta el 31 de octubre
+[a] Reservar ahora
+[p] No solo cuidamos tu vehículo,
+[p] cuidamos tu tranquilidad.
+[h3] Servicios
+[li] Mecánica general
+[li] Mantenimiento preventivo
+[li] Planchado y pintura
+[li] Detailing
+[h3] Contacto
+[a] Av. La Molina 724, La Molina
+[a] 997 572 471
+[a] contacto@galloautos.com
+[div] Lun – Vie
+[div] 8:30 a 18:00
+[div] 8:30 a 15:00
+[span] © 2026 Gallo Autos. Todos los derechos reservados.
+[span] S&C Autos S.A.C. · www.galloautos.com

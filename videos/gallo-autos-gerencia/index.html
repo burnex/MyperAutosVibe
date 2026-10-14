@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #F6F7F9;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-v63y"
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="60"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div data-hf-id="hf-3x7g"
+        id="el-01-hook"
+        class="scene"
+        data-composition-id="01-hook"
+        data-composition-src="compositions/frames/01-hook.html"
+        data-start="0"
+        data-duration="5.5"
+        data-track-index="0"
+      ></div>
+
+      <div data-hf-id="hf-e500"
+        id="el-02-fugas"
+        class="scene"
+        data-composition-id="02-fugas"
+        data-composition-src="compositions/frames/02-fugas.html"
+        data-start="5"
+        data-duration="6.4"
+        data-track-index="1"
+      ></div>
+
+      <div data-hf-id="hf-03fd"
+        id="el-03-giro"
+        class="scene"
+        data-composition-id="03-giro"
+        data-composition-src="compositions/frames/03-giro.html"
+        data-start="11"
+        data-duration="4.5"
+        data-track-index="0"
+      ></div>
+
+      <div data-hf-id="hf-59be"
+        id="el-04-recepcion"
+        class="scene"
+        data-composition-id="04-recepcion"
+        data-composition-src="compositions/frames/04-recepcion.html"
+        data-start="15"
+        data-duration="6.5"
+        data-track-index="1"
+      ></div>
+
+      <div data-hf-id="hf-9tw2"
+        id="el-05-tablero"
+        class="scene"
+        data-composition-id="05-tablero"
+        data-composition-src="compositions/frames/05-tablero.html"
+        data-start="21"
+        data-duration="6.5"
+        data-track-index="0"
+      ></div>
+
+      <div data-hf-id="hf-8jko"
+        id="el-06-tecnico"
+        class="scene"
+        data-composition-id="06-tecnico"
+        data-composition-src="compositions/frames/06-tecnico.html"
+        data-start="27"
+        data-duration="7.4"
+        data-track-index="1"
+      ></div>
+
+      <div data-hf-id="hf-qb1v"
+        id="el-07-aprueba"
+        class="scene"
+        data-composition-id="07-aprueba"
+        data-composition-src="compositions/frames/07-aprueba.html"
+        data-start="34"
+        data-duration="8.5"
+        data-track-index="0"
+      ></div>
+
+      <div data-hf-id="hf-xzl0"
+        id="el-08-control"
+        class="scene"
+        data-composition-id="08-control"
+        data-composition-src="compositions/frames/08-control.html"
+        data-start="42"
+        data-duration="5.5"
+        data-track-index="1"
+      ></div>
+
+      <div data-hf-id="hf-a1kx"
+        id="el-09-resultado"
+        class="scene"
+        data-composition-id="09-resultado"
+        data-composition-src="compositions/frames/09-resultado.html"
+        data-start="47"
+        data-duration="6.4"
+        data-track-index="0"
+      ></div>
+
+      <div data-hf-id="hf-jivp"
+        id="el-10-cta"
+        class="scene"
+        data-composition-id="10-cta"
+        data-composition-src="compositions/frames/10-cta.html"
+        data-start="53"
+        data-duration="7"
+        data-track-index="1"
+      ></div>
+
+      <!-- BGM -->
+      <audio data-hf-id="hf-ae4y"
+        id="el-bgm"
+        src="assets/bgm/track.mp3"
+        data-start="0"
+        data-duration="60"
+        data-track-index="11"
+        data-volume="0.9"
+      ></audio>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-hook", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 5);
+        tl.fromTo("#el-02-fugas", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 5);
+        tl.to("#el-02-fugas", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 11);
+        tl.fromTo("#el-03-giro", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 11);
+        tl.to("#el-03-giro", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 15);
+        tl.fromTo("#el-04-recepcion", { y: 1920, opacity: 1 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 15);
+        tl.to("#el-04-recepcion", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 21);
+        tl.fromTo("#el-05-tablero", { y: 1920, opacity: 1 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 21);
+        tl.to("#el-05-tablero", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 27);
+        tl.fromTo("#el-06-tecnico", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 27);
+        tl.to("#el-06-tecnico", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 34);
+        tl.fromTo("#el-07-aprueba", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 34);
+        tl.to("#el-07-aprueba", { y: -1920, duration: 0.5, ease: "power3.inOut" }, 42);
+        tl.fromTo("#el-08-control", { y: 1920, opacity: 1 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 42);
+        tl.to("#el-08-control", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 47);
+        tl.fromTo("#el-09-resultado", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 47);
+        tl.to("#el-09-resultado", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 53);
+        tl.fromTo("#el-10-cta", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 53);
+        tl.to({}, { duration: 60 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

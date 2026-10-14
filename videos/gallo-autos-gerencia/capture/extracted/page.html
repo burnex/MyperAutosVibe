@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<style>
+:root{
+  --blue:#2908F1;--blue-d:#1F05C4;--blue-50:#F0EEFF;--blue-100:#E1DCFF;
+  --navy:#0B1B3A;--ink:#0F172A;--txt:#334155;--mut:#64748B;--mut2:#94A3B8;
+  --yellow:#FFC800;--yellow-d:#F2BB00;
+  --bg:#F6F7F9;--card:#fff;--line:#E8EBF0;--line2:#F1F3F6;
+  --ok:#16A34A;--ok-50:#ECFDF3;
+  --r:14px;--sh:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.04);--sh2:0 18px 48px rgba(15,23,42,.12);
+  --wrap:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:'Roboto',system-ui,-apple-system,sans-serif;background:#fff;color:var(--txt);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+b,strong{color:var(--ink);font-weight:700}
+ul{list-style:none}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+.on-dark :focus-visible{outline-color:var(--yellow)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 18px;border-radius:10px;font-weight:600;font-size:14.5px;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s,transform .15s}
+.btn svg.i{width:18px;height:18px}
+.btn-lg{height:52px;padding:0 24px;font-size:16px;border-radius:12px}
+.btn-sm{height:38px;padding:0 14px;font-size:14px}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-y:hover{background:var(--yellow-d)}
+.btn-b{background:var(--blue);color:#fff}
+.btn-b:hover{background:var(--blue-d)}
+.btn-s{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-s:hover{border-color:#CBD2DC;background:var(--bg)}
+.btn-s svg.i{color:var(--blue)}
+.btn-w{background:#fff;color:var(--blue)}
+.btn-w:hover{background:var(--blue-50)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
+.logo{display:inline-flex;align-items:center;background:var(--blue);border-radius:10px;padding:7px 12px;flex:none}
+.logo img{height:24px;width:auto}
+.links{display:flex;gap:4px}
+.links a{padding:8px 12px;border-radius:9px;font-weight:500;font-size:15px;color:var(--txt)}
+.links a:hover{background:var(--line2);color:var(--ink)}
+.nav .act{display:flex;gap:8px;margin-left:auto}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+.mnav{display:none}
+
+/* hero */
+.hero{background:radial-gradient(900px 480px at 85% 10%,var(--blue-50),transparent 70%),linear-gradient(180deg,#fff,var(--bg));padding:72px 0 88px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);color:var(--blue);font-weight:600;font-size:13.5px;padding:6px 12px 6px 10px;border-radius:99px;box-shadow:var(--sh)}
+.tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+h1{font-size:clamp(38px,5.4vw,64px);line-height:1.04;letter-spacing:-1.6px;color:var(--navy);font-weight:900;margin:22px 0 20px}
+h1 em{font-style:normal;color:var(--blue)}
+.lead{font-size:18px;color:var(--txt);max-width:560px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.rating{display:flex;align-items:center;gap:12px;margin-top:32px;font-size:14.5px;color:var(--mut)}
+.stars{color:#E8A400;letter-spacing:1px}
+.av{display:flex}
+.av span{width:34px;height:34px;border-radius:50%;border:2px solid #fff;margin-left:-8px;display:grid;place-items:center;color:#fff;font-size:11.5px;font-weight:700}
+.av span:first-child{margin-left:0}
+
+/* phone mockup */
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone-wrap::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:var(--blue);opacity:.08;top:50%;left:50%;transform:translate(-50%,-50%)}
+.phone{position:relative;width:300px;background:var(--navy);border-radius:42px;padding:12px;box-shadow:var(--sh2)}
+.phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:12px;background:var(--navy);z-index:2}
+.screen{background:var(--bg);border-radius:32px;overflow:hidden;min-height:560px}
+.scr-top{background:var(--blue);color:#fff;padding:54px 20px 22px}
+.scr-top .row{display:flex;justify-content:space-between;align-items:center;font-size:12px;opacity:.9}
+.scr-top .pl{background:rgba(255,255,255,.16);border-radius:6px;padding:2px 8px;font-weight:600;letter-spacing:.4px}
+.scr-top h4{font-size:22px;font-weight:700;margin:10px 0 2px}
+.scr-top small{font-size:12.5px;opacity:.85}
+.pb{height:8px;border-radius:9px;background:rgba(255,255,255,.22);margin-top:14px;overflow:hidden}
+.pb i{display:block;height:100%;width:62%;background:var(--yellow);border-radius:9px}
+.scr-b{padding:16px}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px}
+.ms{display:flex;align-items:center;gap:10px;font-size:13px;padding:6px 0;color:var(--txt)}
+.ms .d{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;flex:none}
+.ms .d svg.i{width:13px;height:13px;stroke-width:2.6}
+.d.ok{background:var(--ok-50);color:var(--ok)}
+.d.cur{background:var(--blue);color:#fff;box-shadow:0 0 0 4px var(--blue-50)}
+.d.pen{border:2px dashed #CBD2DC}
+.ms.pen{color:var(--mut)}
+.ms small{margin-left:auto;color:var(--mut);font-size:11.5px}
+.mrow{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px}
+.mrow span{color:var(--mut)}
+.mrow b{white-space:nowrap}
+
+/* stats */
+.stats{border-bottom:1px solid var(--line);background:#fff}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stats div div{padding:30px 16px;text-align:center;border-left:1px solid var(--line)}
+.stats div div:first-child{border-left:0}
+.stats b{display:block;font-size:34px;font-weight:900;color:var(--blue);letter-spacing:-.5px;line-height:1.1}
+.stats small{color:var(--mut);font-size:14px}
+
+/* sections */
+section{padding:96px 0}
+.alt{background:var(--bg)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.eyebrow{display:block;color:var(--blue);font-weight:700;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px}
+h2{font-size:clamp(30px,3.6vw,42px);line-height:1.12;letter-spacing:-.8px;color:var(--navy);font-weight:900}
+.sub{color:var(--mut);font-size:17px;max-width:600px;margin-top:12px}
+.grid{display:grid;gap:20px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:26px}
+.ic{width:46px;height:46px;border-radius:12px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;margin-bottom:18px}
+.ic svg.i{width:22px;height:22px}
+.card h3{font-size:18px;color:var(--ink);font-weight:700;margin-bottom:6px}
+.card p{font-size:15px;color:var(--mut)}
+.svc{display:flex;flex-direction:column;transition:border-color .15s,transform .15s,box-shadow .15s}
+.svc:hover{border-color:var(--blue-100);transform:translateY(-2px);box-shadow:var(--sh2)}
+.svc .pr{margin-top:auto;padding-top:18px;display:flex;align-items:baseline;gap:6px;border-top:1px dashed var(--line);margin-top:20px}
+.svc .pr small{color:var(--mut);font-size:13px}
+.svc .pr b{font-size:19px;color:var(--blue)}
+
+/* mi auto */
+.dark{background:var(--navy);color:#C9D2E3}
+.dark h2{color:#fff}
+.dark .eyebrow{color:var(--yellow)}
+.dark .sub{color:#AEB9CE}
+.feat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:26px;position:relative}
+.feat .n{position:absolute;top:22px;right:24px;font-weight:700;font-size:13px;color:#7E8BA6}
+.feat .ic{background:rgba(255,255,255,.08);color:#fff}
+.feat h3{color:#fff;font-size:18px;margin-bottom:6px}
+.feat p{font-size:15px;color:#AEB9CE}
+.feat.cta{background:var(--blue);border-color:var(--blue);display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.feat.cta p{color:#E4E0FF;margin:8px 0 20px}
+
+/* opiniones */
+.gs{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;box-shadow:var(--sh)}
+.gs>b{font-size:30px;font-weight:900;color:var(--ink)}
+.gs small{display:block;color:var(--mut);font-size:13px}
+.rv p{color:var(--txt);font-size:16px;margin:14px 0 22px}
+.who{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--ink);font-size:15px}
+.who small{display:block;font-weight:400;color:var(--mut);font-size:13px}
+.who .a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700}
+.ins-t{margin-top:64px;text-align:center;color:var(--mut);font-weight:500}
+.ins{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px}
+.ins span{padding:10px 20px;border:1px solid var(--line);border-radius:10px;background:#fff;font-weight:700;color:#475569;font-size:15px}
+
+/* promo */
+.band{background:linear-gradient(120deg,var(--blue),#4A2BFF);border-radius:20px;padding:40px 44px;display:flex;justify-content:space-between;align-items:center;gap:24px;color:#fff;flex-wrap:wrap;position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.07)}
+.band h2{color:#fff;font-size:28px}
+.band p{color:#E4E0FF;font-size:17px;margin-top:6px;max-width:640px}
+.band p b{color:var(--yellow)}
+.band .btn{position:relative;z-index:1}
+
+/* footer */
+footer{background:var(--navy);color:#AEB9CE;padding:72px 0 28px;font-size:15px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr 1.3fr 1fr;gap:40px}
+footer .logo2{height:74px;width:auto;margin-bottom:16px}
+footer h3{color:#fff;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+footer li{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+footer li svg.i{color:var(--yellow);margin-top:2px;width:18px;height:18px}
+footer a:hover{color:#fff;text-decoration:underline}
+.copy{border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13.5px;color:#8E9AB3}
+
+/* whatsapp */
+.wa{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.22);z-index:60;transition:transform .15s}
+.wa:hover{transform:scale(1.06)}
+.wa svg{width:30px;height:30px;fill:#fff}
+
+/* responsive */
+@media (max-width:1100px){
+  .links,.nav .act{display:none}
+  .burger{display:inline-flex}
+  .mnav{position:absolute;left:0;right:0;top:68px;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--sh2);padding:12px 24px 20px}
+  .mnav.open{display:block}
+  .mnav a.l{display:block;padding:12px 4px;font-weight:500;color:var(--ink);border-bottom:1px solid var(--line2)}
+  .mnav .act2{display:grid;gap:10px;margin-top:16px}
+  .mnav .btn{width:100%}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .hero{padding:48px 0 64px}
+  .hero .wrap{grid-template-columns:1fr;gap:48px}
+  .g3{grid-template-columns:1fr 1fr}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stats div div:nth-child(3){border-left:0}
+  .stats div div:nth-child(n+3){border-top:1px solid var(--line)}
+  section{padding:72px 0}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .g3,.cols{grid-template-columns:1fr}
+  .g4{gap:12px}
+  .svc{padding:18px}
+  .svc .ic{width:40px;height:40px;margin-bottom:14px}
+  .svc h3{font-size:16px}
+  .svc p{font-size:14px}
+  .svc .pr b{font-size:17px}
+  .ctas .btn{width:100%}
+  .lead{font-size:17px}
+  .band{padding:30px 24px}
+  .band .btn{width:100%}
+  .phone{width:280px}
+  .screen{min-height:520px}
+  .stats b{font-size:28px}
+  .stats div div{padding:22px 8px}
+  .mnav{padding:8px 16px 18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* math */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* math */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* math */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* math */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-209F, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(assets/fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AE, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F8D0-1F8D8, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FAC6, U+1FAC8, U+1FACC-1FADD, U+1FADF-1FAEB, U+1FAEF-1FAFA, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBHMdazTgWw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M3 13l2-6a2 2 0 0 1 2-1.5h10A2 2 0 0 1 19 7l2 6v4h-2" /><path d="M5 17H3v-4h18" /><circle cx="7.5" cy="17" r="1.8" /><circle cx="16.5" cy="17" r="1.8" /></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M16 3v4M8 3v4M3 10h18" /></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7" /></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z" /></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" /><path d="M10 10h4v4h-4zM9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" /></symbol>
+    <symbol id="i-disc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3" /><path d="M12 3v3M21 12h-3" /></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" /></symbol>
+    <symbol id="i-susp" viewBox="0 0 24 24"><path d="M12 2v3M12 19v3M8 5h8M8 19h8M9 8l6 2-6 2 6 2-6 2" /></symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24"><path d="M18 3l3 3-9 9-3-3 9-9Z" /><path d="M9 12c-3 0-4 2-4 4s-1 3-2 3c2 2 8 2 9-3" /></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z" /></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4" /></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" /><circle cx="12" cy="13.5" r="3.5" /></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 4V3h6v1M9 10h6M9 14h6M9 18h3" /></symbol>
+    <symbol id="i-hist" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5M12 7v5l3 2" /></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" /><circle cx="12" cy="9.5" r="2.5" /></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" /></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z" /><path d="m9 12 2 2 4-4" /></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Gallo Autos, ir al inicio"><img src="http://localhost:8000/intranet/img/logo1.png" alt="Gallo Autos" width="96" height="24"></a>
+    <nav class="links" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#mi-auto">Mi Auto</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="act">
+      <a class="btn btn-s btn-sm" href="intranet/index.html?login=1" title="Acceso para el equipo del taller"><svg class="i" aria-hidden="true"><use href="#i-lock" /></svg>Portal</a>
+      <a class="btn btn-s btn-sm" href="miauto/index.html#inicio"><svg class="i" aria-hidden="true"><use href="#i-car" /></svg>Mi auto</a>
+      <a class="btn btn-y btn-sm" href="miauto/index.html#agendar"><svg class="i" aria-hidden="true"><use href="#i-cal" /></svg>Agendar cita</a>
+    </div>
+    <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><svg class="i" aria-hidden="true"><use href="#i-menu" /></svg></button>
+  </div>
+  <div class="mnav" id="mnav">
+    <a class="l" href="#servicios">Servicios</a>
+    <a class="l" href="#mi-auto">Mi Auto</a>
+    <a class="l" href="#opiniones">Opiniones</a>
+    <a class="l" href="#contacto">Contacto</a>
+    <div class="act2">
+      <a class="btn btn-y" href="miauto/index.html#agendar"><svg class="i" aria-hidden="true"><use href="#i-cal" /></svg>Agendar cita</a>
+      <a class="btn btn-s" href="miauto/index.html#inicio"><svg class="i" aria-hidden="true"><use href="#i-car" /></svg>Mi auto</a>
+      <a class="btn btn-s" href="intranet/index.html?login=1" title="Acceso para el equipo del taller"><svg class="i" aria-hidden="true"><use href="#i-lock" /></svg>Portal del equipo</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h-hero">
+    <div class="wrap">
+      <div>
+        <span class="tag">Tu taller de confianza · La Molina</span>
+        <h1 id="h-hero">Cuidamos tu auto.<br><em>Tú lo ves todo.</em></h1>
+        <p class="lead">Agenda en un minuto, sigue cada etapa de la reparación desde tu celular y aprueba el presupuesto viendo fotos de tu propio auto. Más de 25 años de experiencia, ahora con total transparencia.</p>
+        <div class="ctas">
+          <a class="btn btn-y btn-lg" href="miauto/index.html#agendar">Agendar mi cita <svg class="i" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+          <a class="btn btn-s btn-lg" href="miauto/index.html#inicio">Ver cómo va mi auto</a>
+        </div>
+        <div class="rating">
+          <div class="av" aria-hidden="true"><span style="background:#0E7490">LA</span><span style="background:#B45309">EV</span><span style="background:#15803D">CR</span><span style="background:#2908F1">RC</span></div>
+          <div><span class="stars" aria-hidden="true">★★★★★</span> <b>4.8</b> en Google · Clientes que vuelven</div>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone" role="img" aria-label="Vista de la app Mi Auto: Kia Cerato placa ADI-388 en reparación, entrega estimada el lunes 19 de octubre">
+          <div class="screen" aria-hidden="true">
+            <div class="scr-top">
+              <div class="row"><span>Kia Cerato</span><span class="pl">ADI-388</span></div>
+              <h4>En reparación</h4>
+              <small>Etapa 3 de 5 · actualizado hace 12 min</small>
+              <div class="pb"><i></i></div>
+            </div>
+            <div class="scr-b">
+              <div class="mcard">
+                <div class="ms"><span class="d ok"><svg class="i"><use href="#i-check" /></svg></span>Auto recibido<small>8:42</small></div>
+                <div class="ms"><span class="d ok"><svg class="i"><use href="#i-check" /></svg></span>Diagnóstico listo<small>10:15</small></div>
+                <div class="ms"><span class="d ok"><svg class="i"><use href="#i-check" /></svg></span>Presupuesto aprobado<small>11:02</small></div>
+                <div class="ms"><span class="d cur"><svg class="i"><use href="#i-wrench" /></svg></span><b>Reparación en curso</b></div>
+                <div class="ms pen"><span class="d pen"></span>Listo para recoger</div>
+              </div>
+              <div class="mcard mrow"><span>Entrega</span><b>Lun 19 oct · 5 p. m.</b></div>
+              <div class="mcard mrow"><span>Técnico a cargo</span><b>Jorge R.</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats" aria-label="Gallo Autos en cifras"><div class="wrap">
+    <div><b>+25</b><small>años de experiencia</small></div>
+    <div><b>+12</b><small>técnicos especializados</small></div>
+    <div><b>24h</b><small>entrega promedio</small></div>
+    <div><b>6</b><small>aseguradoras aliadas</small></div>
+  </div></div>
+
+  <section id="servicios" class="alt" aria-labelledby="h-svc">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow">Servicios</span><h2 id="h-svc">Todo lo que tu auto necesita</h2>
+        <p class="sub">Precios referenciales. El precio final lo apruebas tú, desde tu celular, antes de que empecemos.</p></div>
+        <a class="btn btn-b" href="miauto/index.html#agendar">Agendar servicio <svg class="i" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+      </div>
+      <div class="grid g4" id="svcGrid"><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-drop" /></svg></div><h3>Cambio de aceite</h3><p>Aceite y filtro con productos de calidad.</p><div class="pr"><small>desde</small><b>S/ 149</b></div></article><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-wrench" /></svg></div><h3>Mantenimiento preventivo</h3><p>Según kilometraje y manual del fabricante.</p><div class="pr"><small>desde</small><b>S/ 290</b></div></article><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-cpu" /></svg></div><h3>Scanner automotriz</h3><p>Lectura de fallas electrónicas y sensores.</p><div class="pr"><small>desde</small><b>S/ 80</b></div></article><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-disc" /></svg></div><h3>Frenos</h3><p>Pastillas, discos y líquido de frenos.</p><div class="pr"><small>desde</small><b>S/ 180</b></div></article><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-target" /></svg></div><h3>Alineación y balanceo</h3><p>Manejo estable y llantas que duran más.</p><div class="pr"><small>desde</small><b>S/ 90</b></div></article><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-susp" /></svg></div><h3>Suspensión</h3><p>Amortiguadores, resortes y terminales.</p><div class="pr"><small>desde</small><b>S/ 220</b></div></article><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-brush" /></svg></div><h3>Planchado y pintura</h3><p>Trabajamos directo con tu seguro.</p><div class="pr"><small>cotización</small><b>Gratis</b></div></article><article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-spark" /></svg></div><h3>Detailing y lavado</h3><p>Pulido, encerado y lavado de salón.</p><div class="pr"><small>desde</small><b>S/ 60</b></div></article></div>
+    </div>
+  </section>
+
+  <section id="mi-auto" class="dark on-dark" aria-labelledby="h-ma">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow">App para clientes</span><h2 id="h-ma">Mi Auto: tu auto, en tu celular</h2>
+        <p class="sub">Ingresa con tu placa y mira todo lo que pasa con tu auto. Lo que antes era “¿y cómo va mi carro?” por WhatsApp, ahora lo ves tú mismo.</p></div>
+      </div>
+      <div class="grid g3">
+        <div class="feat"><span class="n">01</span><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-cal" /></svg></div><h3>Agenda en 1 minuto</h3><p>Elige servicio, día y hora disponible. Te recordamos por WhatsApp un día antes.</p></div>
+        <div class="feat"><span class="n">02</span><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-pulse" /></svg></div><h3>Sigue tu auto en vivo</h3><p>Cada etapa con hora, fotos y comentario del técnico. Como seguir un delivery.</p></div>
+        <div class="feat"><span class="n">03</span><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-camera" /></svg></div><h3>Aprueba con fotos</h3><p>Ves la pieza gastada antes de pagar por ella. Apruebas o rechazas cada ítem.</p></div>
+        <div class="feat"><span class="n">04</span><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-clip" /></svg></div><h3>Inspección semáforo</h3><p>Revisamos 20 puntos: verde está bien, amarillo pronto, rojo urgente.</p></div>
+        <div class="feat"><span class="n">05</span><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-hist" /></svg></div><h3>Historial de tu auto</h3><p>Servicios, kilometraje y comprobantes en un solo lugar. Suma valor si lo vendes.</p></div>
+        <div class="feat cta"><h3>Pruébalo ahora</h3><p>Ingresa con tu placa y descubre Mi Auto. Sin descargar nada.</p><a class="btn btn-w" href="miauto/index.html#inicio">Entrar con mi placa <svg class="i" aria-hidden="true"><use href="#i-arrow" /></svg></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="opiniones" aria-labelledby="h-op">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow">Opiniones</span><h2 id="h-op">Nuestros clientes nos recomiendan</h2></div>
+        <div class="gs"><b>4.8</b><div><span class="stars" aria-label="5 estrellas">★★★★★</span><small>Calificación en Google</small></div></div>
+      </div>
+      <div class="grid g3">
+        <figure class="card rv"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote><p>“Muy buen servicio, se fijan en los detalles y mi carro quedó impecable.”</p></blockquote><figcaption class="who"><span class="a" style="background:#0E7490" aria-hidden="true">C</span><div>Cristina<small>Reseña de Google</small></div></figcaption></figure>
+        <figure class="card rv"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote><p>“Calidad-precio recomendado. Buena atención al cliente de principio a fin.”</p></blockquote><figcaption class="who"><span class="a" style="background:#B45309" aria-hidden="true">E</span><div>Edwin V.<small>Reseña de Google</small></div></figcaption></figure>
+        <figure class="card rv"><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><blockquote><p>“Muy buen servicio y cuidan mucho su buen prestigio.”</p></blockquote><figcaption class="who"><span class="a" style="background:#2908F1" aria-hidden="true">R</span><div>Ricardo C.<small>Reseña de Google</small></div></figcaption></figure>
+      </div>
+      <p class="ins-t">Atención preferente a particulares, flotas y compañías de seguros</p>
+      <ul class="ins" aria-label="Aseguradoras y aliados"><li><span>Rímac</span></li><li><span>Pacífico</span></li><li><span>Mapfre</span></li><li><span>La Positiva</span></li><li><span>Qualitas</span></li><li><span>Interbank</span></li></ul>
+    </div>
+  </section>
+
+  <section style="padding-top:0" aria-label="Promoción">
+    <div class="wrap">
+      <div class="band on-dark">
+        <div><h2>Promo del mes</h2><p>Cambia el aceite y recibe diagnóstico computarizado <b>GRATIS</b> · Hasta el 31 de octubre</p></div>
+        <a class="btn btn-y btn-lg" href="miauto/index.html#agendar">Reservar ahora <svg class="i" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contacto" class="on-dark">
+  <div class="wrap">
+    <div class="cols">
+      <div><img class="logo2" src="http://localhost:8000/intranet/img/logo2.png" alt="Gallo Autos" width="112" height="74"><p>No solo cuidamos tu vehículo,<br>cuidamos tu tranquilidad.</p></div>
+      <div><h3>Servicios</h3><ul><li>Mecánica general</li><li>Mantenimiento preventivo</li><li>Planchado y pintura</li><li>Detailing</li></ul></div>
+      <div><h3>Contacto</h3><ul>
+        <li><svg class="i" aria-hidden="true"><use href="#i-pin" /></svg><a href="https://maps.google.com/?q=Av.+La+Molina+724,+La+Molina" target="_blank" rel="noopener">Av. La Molina 724, La Molina</a></li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-phone" /></svg><a href="tel:+51997572471">997 572 471</a></li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-mail" /></svg><a href="mailto:contacto@galloautos.com">contacto@galloautos.com</a></li></ul></div>
+      <div><h3>Horario</h3><ul><li><svg class="i" aria-hidden="true"><use href="#i-clock" /></svg><div>Lun – Vie<br>8:30 a 18:00</div></li><li><svg class="i" aria-hidden="true"><use href="#i-clock" /></svg><div>Sábado<br>8:30 a 15:00</div></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Gallo Autos. Todos los derechos reservados.</span><span>S&amp;C Autos S.A.C. · www.galloautos.com</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/51997572471" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z" /></svg>
+</a>
+
+<script>
+(function(){
+  var SVC=[
+    ['drop','Cambio de aceite','Aceite y filtro con productos de calidad.','desde','S/ 149'],
+    ['wrench','Mantenimiento preventivo','Según kilometraje y manual del fabricante.','desde','S/ 290'],
+    ['cpu','Scanner automotriz','Lectura de fallas electrónicas y sensores.','desde','S/ 80'],
+    ['disc','Frenos','Pastillas, discos y líquido de frenos.','desde','S/ 180'],
+    ['target','Alineación y balanceo','Manejo estable y llantas que duran más.','desde','S/ 90'],
+    ['susp','Suspensión','Amortiguadores, resortes y terminales.','desde','S/ 220'],
+    ['brush','Planchado y pintura','Trabajamos directo con tu seguro.','cotización','Gratis'],
+    ['spark','Detailing y lavado','Pulido, encerado y lavado de salón.','desde','S/ 60']
+  ];
+  document.getElementById('svcGrid').innerHTML=SVC.map(function(s){
+    return '<article class="card svc"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-'+s[0]+'"/></svg></div><h3>'+s[1]+'</h3><p>'+s[2]+'</p><div class="pr"><small>'+s[3]+'</small><b>'+s[4]+'</b></div></article>';
+  }).join('');
+
+  var burger=document.querySelector('.burger'),mnav=document.getElementById('mnav');
+  function setMenu(open){
+    mnav.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+    burger.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+    burger.querySelector('use').setAttribute('href',open?'#i-x':'#i-menu');
+  }
+  burger.addEventListener('click',function(){setMenu(!mnav.classList.contains('open'))});
+  mnav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mnav.classList.contains('open')){setMenu(false);burger.focus()}});
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -41,6 +41,14 @@ Portal y Mi Auto comparten los datos: ábrelos en pestañas del mismo navegador 
 
 Para empezar de cero: Portal → Usuarios y auditoría → "Reiniciar demo".
 
+## Publicar (dist)
+
+```bash
+./scripts/build-dist.sh
+```
+
+Genera `dist/` (≈640 KB): la web como `index.html`, más `intranet/` (Portal) y `miauto/` (Mi Auto). Es 100 % estático: se sube tal cual a Netlify, Vercel, GitHub Pages, S3 o cualquier hosting. El link para gerencia es la raíz del sitio; el Portal queda en `/intranet/index.html?login=1` y Mi Auto en `/miauto/`.
+
 ## Documentación
 
 - [docs/funcionalidades/](docs/funcionalidades/README.md): una ficha por funcionalidad, con guion para video.

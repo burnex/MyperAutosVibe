@@ -1,0 +1,11 @@
+{
+  "bgm": {
+    "path": "assets/bgm/track.mp3",
+    "volume": 0.9,
+    "query": "confident modern corporate tech underscore, uplifting, clean beat, no vocals, around 115 bpm",
+    "duration_s": 61
+  },
+  "bgm_pending": false,
+  "voices": [],
+  "sfx": []
+}

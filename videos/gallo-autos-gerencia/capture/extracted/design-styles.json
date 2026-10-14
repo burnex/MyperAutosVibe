@@ -1,0 +1,322 @@
+{
+  "typography": [
+    {
+      "role": "display",
+      "fontFamily": "Roboto",
+      "fontSize": "64px",
+      "fontWeight": "900",
+      "lineHeight": "66.56px",
+      "letterSpacing": "-1.6px",
+      "color": "#0B1B3A",
+      "sampleText": "Cuidamos tu auto.Tú lo ves todo."
+    },
+    {
+      "role": "heading",
+      "fontFamily": "Roboto",
+      "fontSize": "42px",
+      "fontWeight": "900",
+      "lineHeight": "47.04px",
+      "letterSpacing": "-0.8px",
+      "color": "#0B1B3A",
+      "sampleText": "Todo lo que tu auto necesita"
+    },
+    {
+      "role": "heading-2",
+      "fontFamily": "Roboto",
+      "fontSize": "28px",
+      "fontWeight": "900",
+      "lineHeight": "31.36px",
+      "letterSpacing": "-0.8px",
+      "color": "#FFFFFF",
+      "sampleText": "Promo del mes"
+    },
+    {
+      "role": "heading-4",
+      "fontFamily": "Roboto",
+      "fontSize": "22px",
+      "fontWeight": "700",
+      "lineHeight": "34.1px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "En reparación"
+    },
+    {
+      "role": "heading-3",
+      "fontFamily": "Roboto",
+      "fontSize": "18px",
+      "fontWeight": "700",
+      "lineHeight": "27.9px",
+      "letterSpacing": "normal",
+      "color": "#0F172A",
+      "sampleText": "Cambio de aceite"
+    },
+    {
+      "role": "body",
+      "fontFamily": "Roboto",
+      "fontSize": "18px",
+      "fontWeight": "400",
+      "lineHeight": "27.9px",
+      "letterSpacing": "normal",
+      "color": "#334155",
+      "sampleText": "Agenda en un minuto, sigue cada etapa de la reparación desde"
+    },
+    {
+      "role": "link",
+      "fontFamily": "Roboto",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24.8px",
+      "letterSpacing": "normal",
+      "color": "#FFFFFF",
+      "sampleText": "Saltar al contenido"
+    },
+    {
+      "role": "body-small",
+      "fontFamily": "Roboto",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "21.7px",
+      "letterSpacing": "normal",
+      "color": "#64748B",
+      "sampleText": "años de experiencia"
+    },
+    {
+      "role": "label",
+      "fontFamily": "Roboto",
+      "fontSize": "13.5px",
+      "fontWeight": "600",
+      "lineHeight": "20.925px",
+      "letterSpacing": "normal",
+      "color": "#2908F1",
+      "sampleText": "Tu taller de confianza · La Molina"
+    }
+  ],
+  "spacing": {
+    "observed": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      40
+    ],
+    "baseUnit": 4
+  },
+  "radius": [
+    "9px",
+    "10px",
+    "12px",
+    "14px"
+  ],
+  "shadows": [
+    {
+      "value": "rgba(15, 23, 42, 0.04) 0px 1px 2px 0px, rgba(15, 23, 42, 0.04) 0px 4px 16px 0px",
+      "count": 12
+    },
+    {
+      "value": "rgba(15, 23, 42, 0.12) 0px 18px 48px 0px",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.22) 0px 10px 28px 0px",
+      "count": 1
+    }
+  ],
+  "buttons": [
+    {
+      "label": "Portal",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0F172A",
+      "padding": "0px 14px",
+      "borderRadius": "10px",
+      "border": "1px solid rgb(232, 235, 240)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": "38px"
+    },
+    {
+      "label": "Agendar cita",
+      "background": "#FFC800",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0F172A",
+      "padding": "0px 14px",
+      "borderRadius": "10px",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "height": "38px"
+    },
+    {
+      "label": "Agendar mi cita \n          Ver cómo va m",
+      "background": "transparent",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#334155",
+      "padding": "0px",
+      "borderRadius": "0px",
+      "border": "0px none rgb(51, 65, 85)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "52px"
+    },
+    {
+      "label": "Agendar mi cita",
+      "background": "#FFC800",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0F172A",
+      "padding": "0px 24px",
+      "borderRadius": "12px",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "height": "52px"
+    },
+    {
+      "label": "Ver cómo va mi auto",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#0F172A",
+      "padding": "0px 24px",
+      "borderRadius": "12px",
+      "border": "1px solid rgb(232, 235, 240)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "height": "52px"
+    },
+    {
+      "label": "Agendar servicio",
+      "background": "#2908F1",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#FFFFFF",
+      "padding": "0px 18px",
+      "borderRadius": "10px",
+      "border": "1px solid rgba(0, 0, 0, 0)",
+      "boxShadow": "none",
+      "fontSize": "14.5px",
+      "fontWeight": "600",
+      "height": "42px"
+    }
+  ],
+  "cards": [
+    {
+      "label": "card",
+      "background": "#FFFFFF",
+      "backgroundImage": "",
+      "backdropFilter": "",
+      "color": "#334155",
+      "padding": "14px",
+      "borderRadius": "14px",
+      "border": "1px solid rgb(232, 235, 240)",
+      "boxShadow": "none",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "height": "200px"
+    }
+  ],
+  "nav": {
+    "label": "navigation",
+    "background": "#FFFFFF",
+    "backgroundImage": "",
+    "backdropFilter": "saturate(1.4) blur(10px)",
+    "color": "#334155",
+    "padding": "0px",
+    "borderRadius": "0px",
+    "border": "",
+    "boxShadow": "none",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "height": "69px"
+  },
+  "chips": [
+    {
+      "label": "Tu taller de confianza ·",
+      "background": "#FFFFFF",
+      "color": "#2908F1",
+      "padding": "6px 12px 6px 10px",
+      "borderRadius": "99px",
+      "border": "1px solid rgb(232, 235, 240)",
+      "boxShadow": "rgba(15, 23, 42, 0.04) 0px 1px 2px 0px, rgba(15, 23, 42, 0.04) 0px 4px 16px 0px",
+      "fontSize": "13.5px",
+      "fontWeight": "600",
+      "height": "34.9219px"
+    },
+    {
+      "label": "LA",
+      "background": "#0E7490",
+      "color": "#FFFFFF",
+      "padding": "0px",
+      "borderRadius": "50%",
+      "border": "2px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "11.5px",
+      "fontWeight": "700",
+      "height": "34px"
+    },
+    {
+      "label": "EV",
+      "background": "#B45309",
+      "color": "#FFFFFF",
+      "padding": "0px",
+      "borderRadius": "50%",
+      "border": "2px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "11.5px",
+      "fontWeight": "700",
+      "height": "34px"
+    },
+    {
+      "label": "CR",
+      "background": "#15803D",
+      "color": "#FFFFFF",
+      "padding": "0px",
+      "borderRadius": "50%",
+      "border": "2px solid rgb(255, 255, 255)",
+      "boxShadow": "none",
+      "fontSize": "11.5px",
+      "fontWeight": "700",
+      "height": "34px"
+    }
+  ],
+  "statCells": [],
+  "tabs": [],
+  "backgrounds": [
+    {
+      "value": "radial-gradient(900px 480px at 85% 10%, rgb(240, 238, 255), rgba(0, 0, 0, 0) 70%), linear-gradient(rgb(255, 255, 255), rgb(246, 247, 249))",
+      "area": 1428480
+    },
+    {
+      "value": "linear-gradient(120deg, rgb(41, 8, 241), rgb(74, 43, 255))",
+      "area": 192493
+    }
+  ],
+  "glass": [
+    {
+      "backdropFilter": "saturate(1.4) blur(10px)",
+      "background": "rgba(255, 255, 255, 0.9)",
+      "border": "",
+      "borderRadius": "0px",
+      "boxShadow": "",
+      "area": 132480
+    }
+  ]
+}

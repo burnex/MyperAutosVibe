@@ -1,0 +1,11 @@
+{
+  "provider": "auto",
+  "speed": "1.0",
+  "lines": [],
+  "bgm": {
+    "mode": "retrieve",
+    "query": "confident modern corporate tech underscore, uplifting, clean beat, no vocals, around 115 bpm",
+    "blob": "Tu taller ya hace el trabajo: Gallo Autos ahora te muestra la plata que se te escapa, y la recupera.",
+    "arc": "Hook (plata quieta) → Problema (3 fugas) → Producto → Recepción → Tablero → Técnico encuentra → Cliente aprueba (pantalla dividida) → Control → Resultado → CTA + Myper"
+  }
+}

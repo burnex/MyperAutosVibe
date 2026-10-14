@@ -37,6 +37,11 @@ App móvil (PWA instalable) que carga `../intranet/js/data.js` y `core.js` y lue
 - `docs/funcionalidades/NN-*.md`: una ficha por funcionalidad, con la misma estructura (ficha técnica, antes/ahora, paso a paso, guion en tabla, datos de ejemplo, mensaje clave), pensadas para generar videos. **Si cambias una funcionalidad, actualiza su ficha.**
 - `docs/MEJORAS.md`: 20 mejoras de proceso acordadas como siguientes pasos (sin funcionalidades nuevas).
 
+## Video y publicación
+- `videos/gallo-autos-gerencia/`: proyecto HyperFrames del video de 60 s (9:16, solo música + textos) para la gerencia. Brief en `BRIEF.md`, plan en `STORYBOARD.md`, escenas en `compositions/frames/`. Prompt original: `docs/video/PROMPT-video-gerencia.md`. Estado: armado y revisado en vista previa (`npx hyperframes preview --background` dentro de esa carpeta); **aún no renderizado a MP4** (`npx hyperframes render --quality high --output renders/video.mp4`). Pendientes sugeridos: recorte izquierdo de la tablet en 04 y celular más grande en 07.
+- `Myper/`: logos y manual de marca de Myper (solo para el cierre del video).
+- `dist/`: build estático para publicar, generado con `./scripts/build-dist.sh` (web como `index.html` + `intranet/` + `miauto/`). Regenerar tras cualquier cambio.
+
 ## Pruebas
 Sin suite formal. Se verificó con jsdom y puppeteer-core (Chrome del sistema) desde un directorio temporal: recorrer todas las vistas por perfil, flujo cotizar→aprobar→reservar→entregar, y sincronización intranet↔Mi Auto.
 
